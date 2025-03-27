@@ -8,7 +8,7 @@ import util from 'tweetnacl-util';
 export class CryptoService {
   private crypto = window.crypto;
 
-  // Store keys for ECDH (we'll keep using Web Crypto for this part)
+  // Store keys for ECDH web crypto
   private myKeyPair: {
     privateKey: CryptoKey;
     publicKey: CryptoKey;

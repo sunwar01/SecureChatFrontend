@@ -6,7 +6,7 @@ import * as signalR from '@microsoft/signalr';
 })
 export class SignalrService {
   private hubConnection: signalR.HubConnection | null = null;
-  private readonly hubUrl = 'http://localhost:5155/chat'; // Update with your API URL
+  private readonly hubUrl = 'http://localhost:5155/chat';
 
   constructor() { }
 
