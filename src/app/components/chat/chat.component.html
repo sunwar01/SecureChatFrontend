@@ -1,0 +1,62 @@
+<div class="chat-container">
+  <div *ngIf="!isConnected" class="login-section">
+    <h2>Secure Chat</h2>
+    <input type="text" [(ngModel)]="username" placeholder="Enter your username" />
+    <button (click)="connectToChat()" [disabled]="connecting">
+      {{ connecting ? 'Connecting...' : 'Connect' }}
+    </button>
+  </div>
+
+  <div *ngIf="isConnected" class="chat-section">
+    <div class="users-list">
+      <h3>Connected Users</h3>
+      <ul>
+        <li *ngFor="let user of userList"
+            [class.selected]="selectedUser === user"
+            (click)="selectUser(user)">
+          {{ user }}
+        </li>
+      </ul>
+
+    </div>
+
+    <div class="messages-area">
+      <h3 *ngIf="selectedUser">Chat with {{ selectedUser }}</h3>
+      <h3 *ngIf="!selectedUser">Select a user to chat</h3>
+
+      <div class="security-info" *ngIf="selectedUser">
+        <div [class.secure]="isKeyExchangeComplete(selectedUser)"
+             [class.insecure]="!isKeyExchangeComplete(selectedUser)">
+          {{ isKeyExchangeComplete(selectedUser) ? 'Secure: End-to-End Encrypted' : 'Not Secure: Key Exchange Incomplete' }}
+        </div>
+      </div>
+
+      <div class="messages" *ngIf="selectedUser">
+        <div *ngFor="let msg of getMessagesForUser(selectedUser)"
+             [class.sent]="msg.from === username"
+             [class.received]="msg.from !== username"
+             [class.error]="!msg.isValid">
+          <strong>{{ msg.from }}:</strong> {{ msg.text }}
+          <span *ngIf="!msg.isValid" class="error-text">
+                [Verification Failed]
+              </span>
+        </div>
+      </div>
+
+      <div class="message-input" *ngIf="selectedUser">
+        <input type="text" [(ngModel)]="currentMessage"
+               placeholder="Type your message..."
+               (keyup.enter)="sendMessage()"
+               [disabled]="!isKeyExchangeComplete(selectedUser)" />
+        <button (click)="sendMessage()"
+                [disabled]="!isKeyExchangeComplete(selectedUser) || !currentMessage.trim()">
+          Send
+        </button>
+      </div>
+
+      <div class="status-message" *ngIf="selectedUser && !isKeyExchangeComplete(selectedUser)">
+        Waiting for key exchange to complete. This happens automatically.
+      </div>
+    </div>
+  </div>
+</div>

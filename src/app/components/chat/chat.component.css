@@ -1,0 +1,145 @@
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+}
+.login-section {
+  text-align: center;
+  margin: 50px auto;
+}
+.login-section input {
+  padding: 8px;
+  margin-right: 5px;
+  min-width: 200px;
+}
+.login-section button {
+  padding: 8px 16px;
+}
+.chat-section {
+  display: flex;
+  flex: 1;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.users-list {
+  width: 200px;
+  border-right: 1px solid #ccc;
+  padding: 10px;
+  background-color: #f8f8f8;
+}
+.users-list ul {
+  list-style: none;
+  padding: 0;
+}
+.users-list li {
+  cursor: pointer;
+  padding: 8px;
+  margin-bottom: 5px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+.users-list li:hover {
+  background-color: #eee;
+}
+.users-list li.selected {
+  background-color: #e0e0e0;
+  font-weight: bold;
+}
+.warning-text {
+  color: #f44336;
+  font-size: 0.8em;
+  font-style: italic;
+}
+.messages-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+.security-info {
+  margin-bottom: 10px;
+  font-size: 0.9em;
+}
+.secure {
+  color: #4CAF50;
+  font-weight: bold;
+}
+.insecure {
+  color: #f44336;
+  font-weight: bold;
+}
+.messages {
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+.sent, .received {
+  margin: 5px 0;
+  padding: 8px 10px;
+  border-radius: 5px;
+  max-width: 80%;
+  word-wrap: break-word;
+}
+.sent {
+  text-align: right;
+  background-color: #e1f5fe;
+  margin-left: auto;
+  border-bottom-right-radius: 0;
+}
+.received {
+  text-align: left;
+  background-color: #f1f1f1;
+  margin-right: auto;
+  border-bottom-left-radius: 0;
+}
+.error {
+  background-color: #ffebee;
+}
+.error-text {
+  color: #f44336;
+  font-size: 0.8em;
+}
+.message-input {
+  display: flex;
+  margin-top: 10px;
+}
+.message-input input {
+  flex: 1;
+  padding: 8px;
+  margin-right: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.message-input button {
+  padding: 8px 16px;
+  background-color: #2196F3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.message-input button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+.status-message {
+  text-align: center;
+  color: #f57c00;
+  margin-top: 10px;
+  font-style: italic;
+}
+.security-button {
+  margin-top: 20px;
+  width: 100%;
+  padding: 8px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
